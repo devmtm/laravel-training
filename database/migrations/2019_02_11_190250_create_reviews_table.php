@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('description');
-            $table->float('rate');
+            $table->float('rate')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->timestamps();
         });

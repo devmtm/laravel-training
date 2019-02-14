@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::get();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -55,7 +57,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::with('category')->find($id);
         return view('products.detail', compact('product'));
     }
 
@@ -68,7 +70,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('products.edit', compact('product'));
+        $categories = Category::get();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -86,6 +89,8 @@ class ProductController extends Controller
         $product->setAttribute('regular_price', $request->input('regular_price'));
         $product->setAttribute('sale_price', $request->input('sale_price'));
         $product->setAttribute('status', $request->input('status'));
+        $product->setAttribute('category_id', $request->input('category_id'));
+        $product->setAttribute('image', 'image.jpg');
         $product->save();
         return redirect('/products/' . $id);
 //        return redirect();

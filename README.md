@@ -19,7 +19,7 @@ Create .env file and set the db connection
 
 Run the migrations
 ```
-php artisan migrate
+php artisan migrate:fresh
 ```
 
 Run database seeder

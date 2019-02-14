@@ -24,9 +24,9 @@
                     <a class="navbar-brand" href="/">Backend Training</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/categories">Categories</a></li>
+                    <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
+                    <li><a href="{{ URL::to('/products') }}">Products</a></li>
+                    <li><a href="{{ URL::to('/categories') }}">Categories</a></li>
                 </ul>
             </div>
         </nav>

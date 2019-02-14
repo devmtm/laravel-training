@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view('categories.index', compact('categories'));
+        return view('categories.categories', compact('categories'));
     }
 
     /**
@@ -37,9 +37,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category($request->all());
+        $category = new Category($request->only(['name']));
         $category->save();
-        return redirect()->route('category-detail', $category->getAttribute('id'));
+        return redirect('/categories/' . $category->getAttribute('id'));
     }
 
     /**
@@ -76,9 +76,9 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        $category->fill($request->all());
+        $category->fill($request->only(['name']));
         $category->save();
-        return redirect()->route('category-detail', $id);
+        return redirect('/categories/' . $id);
     }
 
     /**
@@ -90,6 +90,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->route('categories-index');
+        return redirect('/categories');
     }
 }

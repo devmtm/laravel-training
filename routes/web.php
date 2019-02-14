@@ -16,3 +16,10 @@ Route::get('/', function () {
 });
 
 Route::resource('products', 'ProductController');
+Route::resource('categories', 'CategoryController');
+
+//Route::get('products', 'ProductController@index');
+//Route::get('products/{id}/edit', 'ProductController@edit');
+//Route::get('products/{id}', 'ProductController@show');
+//Route::delete('products/{id}', 'ProductController@destroy');
+//Route::post('products', 'ProductController@store');

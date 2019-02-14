@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <td>Category</td>
-                <td>{{$product->category_id}}</td>
+                <td>{{$product->category->name?? ''}}</td>
             </tr>
             <tr>
                 <td>User</td>
